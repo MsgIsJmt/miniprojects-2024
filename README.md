@@ -1,26 +1,38 @@
-# 미니프로젝트 2024
-IoT 개발자 미니프로젝트 리포지토리
+# 미니프로젝트-1 2024
+라즈베리 파이를 이용한 도서 관리 프로그램
 
-## 1일차
-- 조별 자리배치
+- 
+
+
+
+
+
+
+
+
+# 미니프로젝트-2 2024
+Iot 개발자 미니프로젝트 리포지토리
+
+## 1일차 (2024-05-14)
+- 조별 자리 배치
 - IoT 프로젝트 개요
 
-    ![IoT 프로젝트](https://raw.githubusercontent.com/MsgIsJmt/miniprojects-2024/main/images/mp001.png)
-
-    1. IoT기기 구성 - 아두이노, 라즈베리파이 등 IoT장비들과 연결
-    2. 서버 구성 - IoT기기와 통신, DB구성, 데이터 수집 앱 개발
+    ![IoT 프로젝트](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/pr001.png)
+    1. IoT 기기 구성 - 아두이노, 라즈베리 파이 등 IoT 장비들과 연결
+    2. 서버 구성 - IoT 기기와 통신, DB 구성, 데이터 수집 앱 개발
     3. 모니터링 구성 - 실시간 모니터링/제어 앱, 전체 연결
 
 - 조별 미니프로젝트
-    - 5월 28일 (40시간)
+    - 5월28일 (40시간)
     - 구체적으로 어떤 디바이스 구성, 데이터 수집, 모니터링 계획
-    - 8월말 정도에 끝나는 프로젝트 일정 계획
-    - 요구사항 리스트, 기능명세,  UI/UX 디자인, DB설계 문서 하나로 통합
+    - 8월 말 정도에 끝나는 프로젝트 일정 계획
+    - 요구사항 리스트, 기능 명세, UI/UX 디자인, DB 설계 -> 문서 하나로 통합하여 작성
     - 5월 28일 오후 각 조별로 파워포인트/프레젠테이션 10분 발표
-    - 요구사항 리스트 문서 전달
-    - 기능명세 문서 
-    - DB설계 ERD 또는 SSMS 물리적 DB설계
-    - UI/UX 디자인
+    - 요구사항 리스트 문서전달
+    - 기능명세 문서
+    - DB 설계 ERD 또는 SSMS 물리적 DB 설계
+    - UI/UX 디자인 5/16에 내용 전달
+
 
 ## 2일차 (2024-05-16)
 - 미니 프로젝트
@@ -56,9 +68,6 @@ IoT 개발자 미니프로젝트 리포지토리
 - 스마트홈 연동 클래스 미니 프로젝트
     1.  요구사항 정의, 기능 명세, 일정 정리
     2.  UI/UX 디자인
-        - RPi는 디자인 없음(콘솔)
-        - 데이터 수신앱
-        - 모니터링 앱
     3.  DB 설계
     4.  RPi 셋팅 (네트워크 셋팅)
     5.  RPi GPIO에 IoT 디바이스 연결 (카메라, HDT(온/습도 센서), RGB LED, ...)
@@ -66,11 +75,91 @@ IoT 개발자 미니프로젝트 리포지토리
     7.  PC(Server) 데이터 수신 C# 프로그래밍 작성
     8.  모니터링 앱 개발 (수신 및 송신)
 
-## 3일차
-- 미니프로젝트
+## 3일차 (2024-05-20)
+- 미니 프로젝트
     - 실무 프로젝트 문서
-    - Jira 사용법
-    - 조별로 진행
+    - jira 사용법
+    - 조별 프로젝트 진행
+
+- 라즈베리 파이 셋팅
+    1. RPi 기본 구성 - RPi 
+    2. RPi 기본 셋팅
+        - [x]최신 업그레이드
+        - [x]한글화
+        - [x]키보드 변경
+        - [x]화면 사이즈 변경 (Real VNC)
+        - [x]Pi Apps 앱설치 도우미 앱
+        - [x]Github Desktop, VS Code 
+        - [x]네트워크 확인
+        - [x]RealVNC Server 자동실행 설정
 
 - 스마트홈 연동 클래스 미니프로젝트
-    -  RPi 셋팅... 진행
+    - 라즈베리 파이 (RPi) 셋팅 ...
+
+## 4일차 (2024-05-21)
+- 라즈베리 파이 IoT 장비 설치
+    [x] 라즈베리 파이 카메라 : sudo libcamera-hello -t 0
+    [] GPIO HAT
+    [] 브레드보드와 연결
+    [] DHT11 센서
+    [] RGB LED 모듈 연결
+    [] 서보모터
+
+
+## 5일차 (2024-05-22)
+- 라즈베리 파이 IoT 장비 설치
+    [x] DHT11 센서
+        - GND : GND 8개 중 아무곳에나 연결
+        - VCC : 5V에 연결
+        - S : GPIO18에 연결
+
+## 6일차 (2024-05-23)
+- 라즈베리 파이 IoT 장비 설치
+    - 서보모터의 경우 서보모터 모듈을 사용해야 떨림을 막을 수 있음
+
+- 네트워크 대공사
+    [x] 개인 공유기, PC, 라즈베리 파이
+
+- 스마트홈 연동 클래스 미니 프로젝트
+    - 온습도 센서, RGB LED
+    - RPi <--> Windows 통신(MQTT)
+    - WPF 모니터링 앱
+
+- IoT 기기간 통신방법
+    - Modbus : 시리얼 통신으로 데이터 전송 (완전 구식)
+    - OPC UA : Modbus통신의 불편한 점을 개선 (매우 복잡)
+    - **MQTT** : 가장 편리하며 AWS, IoT, Azure IoT 클라우드 산업계 표준으로 사용
+
+- 데이터 전달 프로세스
+    - Publisher : 데이터를 만들어 Broker에 전달한다.
+    - Broker : Publisher에게 받은 데이터 중 Subscriber 요구하는 데이터를 전달한다.
+    - Publisher와 Subscriber의 관계는 고정적이지 않다.
+        - 윈도우가 Publisher나 Subscriber 역할을 하거나 RPi가 Publisher나 Subscriber 역할을 역할을 할 수도 있다.
+
+- MQTT 통신
+    - https://mosquitto.org/ 를 통해 Mosquitto 설치
+    - mosquitto.conf : listener 1883 0.0.0.0으로 변경
+        ```
+        listener port-number [ip address/host name/unix socket path]
+        listener 1883 0.0.0.0
+        ```
+    - allow_anonymous true으로 변경
+        ```
+        allow_anonymous false 를
+        allow_anonymous true 로 변경
+        ```
+    - Mosquitto Broker 설치
+    - 윈도우 -> 서비스 앱에서 Mosquitto Broker 속성에서 시작 유형을 '자동'으로 변경
+
+
+
+## 7일차 (2024-05-22)
+
+
+## 8일차 (2024-05-23)
+
+
+## 9일차 (2024-05-24)
+
+
+## 10일차 (2024-05-27
