@@ -1,0 +1,181 @@
+/*
+   File: myproject_2-1.c
+
+   Created: 24-03-27
+   Author: 명수진
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_LEN 100
+
+// 도서 정보를 저장하는 구조체
+struct Book {
+    char title[MAX_LEN];       // 도서 제목
+    char author[MAX_LEN];      // 작가 이름
+    char publisher[MAX_LEN];   // 출판사
+    int id;                    // 도서 ID
+    struct Book* next;         // 다음 도서를 가리키는 포인터
+};
+
+struct Book* head = NULL;      // 연결 리스트의 시작 지점
+
+// 도서 등록 함수
+void addBook(char* title, char* author, char* publisher, int id) {
+    // 새로운 도서 노드를 동적으로 할당하여 생성
+    struct Book* newBook = (struct Book*)malloc(sizeof(struct Book));
+    // 제목, 작가, 출판사, ID를 설정하고, 다음 노드를 현재의 head로 설정
+    strcpy(newBook->title, title);
+    strcpy(newBook->author, author);
+    strcpy(newBook->publisher, publisher);
+    newBook->id = id;
+    newBook->next = head;
+    // head를 새로운 노드로 갱신하여 새로운 도서가 첫 번째에 추가되도록 함
+    head = newBook;
+}
+
+// 도서 검색 함수
+void searchBook(int option, char* keyword) {
+    struct Book* current = head;
+    int found = 0; // 도서가 발견되었는지 여부를 나타내는 플래그
+
+    // 연결 리스트를 순회하며 도서를 검색
+    while (current != NULL) {
+        // 옵션에 따라 검색 수행
+        if ((option == 1 && strcmp(current->title, keyword) == 0) || // 제목으로 검색
+            (option == 2 && strcmp(current->author, keyword) == 0) || // 작가 이름으로 검색
+            (option == 3 && strcmp(current->publisher, keyword) == 0) || // 출판사로 검색
+            (option == 4 && current->id == atoi(keyword))) { // ID로 검색
+            printf("도서 제목: %s, 작가: %s, 출판사: %s, 도서 ID: %d\n",
+                current->title, current->author, current->publisher, current->id);
+            found = 1;
+        }
+        current = current->next;
+    }
+
+    if (!found)
+        printf("해당하는 도서를 찾을 수 없습니다.\n");
+}
+
+// 도서 삭제 함수
+void deleteBook(int id) {
+    struct Book* current = head;
+    struct Book* prev = NULL;
+
+    // 연결 리스트를 순회하며 삭제할 도서를 찾음
+    while (current != NULL) {
+        if (current->id == id) {
+            if (prev == NULL) {
+                // 삭제할 노드가 첫 번째 노드인 경우 head를 다음 노드로 갱신
+                head = current->next;
+            }
+            else {
+                // 이전 노드의 next를 삭제할 노드의 next로 연결하여 노드 삭제
+                prev->next = current->next;
+            }
+            free(current);  // 메모리 해제
+            printf("도서 삭제 완료.\n");
+            return;
+        }
+        prev = current;
+        current = current->next;
+    }
+    printf("해당 도서를 찾을 수 없습니다.\n");
+}
+
+// 도서 목록 출력 함수
+void printBooks() {
+    struct Book* current = head;
+    if (current == NULL) {
+        printf("도서가 없습니다.\n");
+        return;
+    }
+    printf("도서 목록:\n");
+    while (current != NULL) {
+        printf("도서 제목: %s, 작가: %s, 출판사: %s, 도서 ID: %d\n",
+            current->title, current->author, current->publisher, current->id);
+        current = current->next;
+    }
+}
+
+// 메뉴 출력 함수
+void printMenu() {
+    printf("**** 메뉴 ****\n");
+    printf("1. 도서 등록\n");
+    printf("2. 도서 검색\n");
+    printf("3. 도서 삭제\n");
+    printf("4. 도서 목록 출력\n");
+    printf("0. 종료\n");
+}
+
+int main() {
+    int id;
+    char title[MAX_LEN], author[MAX_LEN], publisher[MAX_LEN], keyword[MAX_LEN];
+
+    // 메뉴를 반복하여 출력하고 사용자의 선택에 따라 동작 수행
+    while (1) {
+        int choice = -1;
+        printMenu(); // 메뉴 출력
+        printf("메뉴를 선택하세요: ");
+        scanf(" %d", &choice);
+        getchar(); // 입력 버퍼 비우기
+
+        // 숫자가 아닌 경우 처리
+        if (choice < 0 || choice > 4) { // 메뉴 선택 범위 확인
+            printf("잘못된 입력입니다. 0부터 4까지의 숫자를 입력하세요.\n");
+            continue; // 다시 메뉴로 이동
+        }
+
+        switch (choice) {
+        case 1:// 도서 등록
+            printf("도서 제목을 입력하세요: ");
+            scanf("%s", title);
+            printf("작가를 입력하세요: ");
+            scanf("%s", author);
+            printf("출판사를 입력하세요: ");
+            scanf("%s", publisher);
+            printf("도서 ID를 입력하세요: ");
+            scanf("%d", &id);
+            addBook(title, author, publisher, id);
+            printf("도서 등록이 완료되었습니다.\n");
+            printf("\n");
+            break;
+
+        case 2:// 도서 검색
+            printf("검색 옵션을 선택하세요:\n");
+            printf("1. 제목으로 검색\n");
+            printf("2. 작가로 검색\n");
+            printf("3. 출판사로 검색\n");
+            printf("4. 도서 ID로 검색\n");
+            scanf("%d", &choice);
+            printf("검색어를 입력하세요: ");
+            scanf("%s", keyword);
+            searchBook(choice, keyword);
+            break;
+
+        case 3:// 도서 삭제
+            printf("삭제할 도서의 ID를 입력하세요: ");
+            scanf("%d", &id);
+            deleteBook(id);
+            break;
+
+        case 4:// 도서 목록 출력
+            printBooks();
+            break;
+
+        case 0:// 종료
+            printf("프로그램을 종료합니다.\n");
+            exit(0);
+            break;
+
+        default:
+            printf("잘못된 메뉴 선택입니다. 다시 선택해주세요.\n");
+            break;
+        }
+    }
+
+    return 0;
+}
+
