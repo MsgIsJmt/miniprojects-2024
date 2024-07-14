@@ -155,10 +155,10 @@ Iot 개발자 미니프로젝트 리포지토리
         - LiveChart2는 차후에 다시, 현재는 OxyPlot 차트 대체
     - 실행결과
 
-        ![스마트홈1](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/pr002.png)
+        ![스마트홈1](https://raw.githubusercontent.com/MsgIsJmt/miniprojects-2024/main/images/mp002.png)
 
-        ![스마트홈2](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/pr003.png)
+        ![스마트홈2](https://raw.githubusercontent.com/MsgIsJmt/miniprojects-2024/main/images/mp003.png)
 
-        ![스마트홈3](https://raw.githubusercontent.com/c9yu/miniprojects-2024/main/imgs/pr004.png)
+        ![스마트홈3](https://raw.githubusercontent.com/MsgIsJmt/miniprojects-2024/main/images/mp004.png)
 
 ## 10일차 (2024-05-28)
